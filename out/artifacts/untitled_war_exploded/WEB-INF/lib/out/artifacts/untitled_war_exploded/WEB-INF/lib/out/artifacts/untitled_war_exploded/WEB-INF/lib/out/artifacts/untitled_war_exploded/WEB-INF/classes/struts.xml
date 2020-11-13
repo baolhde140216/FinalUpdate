@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <package name="default" extends="struts-default">
+
+
+        <global-results>
+            <result>index.jsp</result>
+        </global-results>
+        <action name="test" class="Actions.LoginAction" method="execute">
+            <result name="success">Register.jsp</result>
+        </action>
+
+
+        <action name="login" class="Actions.LoginAction" method="loginPost">
+            <result name="success">login.jsp</result>
+            <result name="checkLogin" type="redirectAction">loginGet</result>
+            <result name="login">login.jsp</result>
+        </action>
+
+
+        <action name="loginGet" class="Actions.LoginAction" method="loginGet">
+            <result name="login">login.jsp</result>
+            <result name="admin">adm-page.jsp?pgprt=0</result>
+            <result name="student">std-page.jsp?pgprt=0</result>
+        </action>
+
+        <action name="home" class="Actions.HomeAction" method="execute">
+            <result name="login">login.jsp</result>
+            <result name="register">Register.jsp</result>
+            <result name="resetPassword">EmailResetpass.jsp</result>
+            <result name="home">index.jsp</result>
+            <result name="admin">adm-page.jsp?pgprt=0</result>
+            <result name="student">std-page.jsp?pgprt=0</result>
+        </action>
+
+        <action name="course" class="Actions.CourseAction" method="execute">
+            <result name="coursePage">adm-page.jsp?pgprt=2</result>
+        </action>
+
+        <action name="question" class="Actions.QuestionAction" method="execute">
+            <result name="questionPage" type="redirect">
+                <param name="location">adm-page.jsp?pgprt=4</param>
+                <param name="coursename">${coursename}</param>
+            </result>
+        </action>
+
+        <action name="exam" class="Actions.ExamAction" method="execute">
+            <result name="examPage" type="redirect">
+                <param name="location">std-page.jsp?pgprt=1</param>
+                <param name="coursename">${coursename}</param>
+            </result>
+            <result name="result" type="redirect">
+                <param name="location">std-page.jsp?pgprt=1&amp;showresult=1</param>
+                <param name="eId">${eId}</param>
+            </result>
+        </action>
+
+        <action name="loginGoogle" class="Actions.LoginGoogleAction" method="execute">
+            <result name="success" type="redirectAction">loginGet</result>
+            <result name="login" type="redirectAction">
+                <param name="location">home?action=login</param>
+            </result>
+        </action>
+
+        <action name="loginFacebook" class="Actions.LoginFacebookAction" method="execute">
+            <result name="success" type="redirectAction">loginGet</result>
+            <result name="login" type="redirectAction">
+                <param name="location">home?action=login</param>
+            </result>
+        </action>
+
+        <action name="user" class="Actions.UserAction" method="execute">
+            <result name="home" type="redirectAction">
+                <param name="location">home?action=home</param>
+            </result>
+            <result name="resetPage">resetPassword.jsp</result>
+            <result name="updatePage" type="redirectAction">
+                <param name="location">paging?action=account</param>
+            </result>
+            <result type="redirect" name="redirectToReset">
+                <param name="location">user?action=resetGet</param>
+                <param name="email">${email}</param>
+            </result>
+            <result name="input">
+                Register.jsp
+            </result>
+            <result name="success">success.jsp</result>
+        </action>
+
+        <action name="updateUser" class="Actions.UserAction" method="execute">
+            <result name="home" type="redirectAction">
+                <param name="location">home?action=home</param>
+            </result>
+            <result name="updatePage">adm-page.jsp?pgprt=1</result>
+            <result name="input">adm-page.jsp?pgprt=1</result>
+        </action>
+
+        <action name="paging" class="Actions.PagingAction" method="execute">
+            <result name="result">std-page.jsp?pgprt=2</result>
+            <result name="account">adm-page.jsp?pgprt=1</result>
+            <result name="question">
+                <param name="location">adm-page.jsp?pgprt=4</param>
+                <param name="coursename">${coursename}</param>
+            </result>
+        </action>
+        <action name="updateProfileAdmin" class="Actions.UserAction" method="execute">
+            <result name="home" type="redirectAction">
+                <param name="location">home?action=home</param>
+            </result>
+            <result name="updatePage">adm-page.jsp?pgprt=0&amp;pedt=1</result>
+            <result name="input">adm-page.jsp?pgprt=0&amp;pedt=1</result>
+        </action>
+
+        <action name="updateProfileStudent" class="Actions.UserAction" method="execute">
+            <result name="home" type="redirectAction">
+                <param name="location">home?action=home</param>
+            </result>
+            <result name="updatePage">std-page.jsp?pgprt=0&amp;pedt=1</result>
+            <result name="input">std-page.jsp?pgprt=0&amp;pedt=1</result>
+        </action>
+    </package>
+</struts>

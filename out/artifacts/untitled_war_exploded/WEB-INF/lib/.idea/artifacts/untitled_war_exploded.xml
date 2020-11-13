@@ -1,0 +1,26 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="untitled:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/untitled_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="untitled/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="untitled" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="sqljdbc42" />
+          <element id="library" level="project" name="jstl-1.2" />
+          <element id="library" level="project" name="httpcore-4.4.9" />
+          <element id="library" level="project" name="httpclient-4.5.5" />
+          <element id="library" level="project" name="javax.mail" />
+          <element id="library" level="project" name="gson-2.8.2" />
+          <element id="library" level="project" name="fluent-hc-4.5.5" />
+          <element id="library" level="project" name="commons-logging-1.2" />
+          <element id="library" level="project" name="struts2-core-2.5.25" />
+          <element id="library" level="application" name="fluent-hc-4.5.51" />
+          <element id="library" level="project" name="struts2-core-2.5.251" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
